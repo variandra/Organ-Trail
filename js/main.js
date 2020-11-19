@@ -1,15 +1,15 @@
 class Traveler {
     constructor(name){
         this.name = name,
-        this.food = 1,
+        this.brains = 1,
         this.isHealthy = true
     }
     hunt() {
-        this.food += 2;
+        this.brains += 2;
     }
     eat() {
-        if(this.food > 0){
-            this.food--;
+        if(this.brains > 0){
+            this.brains--;
         }else{
             this.isHealthy = false;
         }
@@ -31,20 +31,19 @@ class Wagon {
     }
     shouldQuarantine() {
         for(let i = 0; this.passengers.length > i; i++){
-            if(this.passengers[i].isHealthy === true){
-                continue
-            }else{
+            if(this.passengers[i].isHealthy === false){
                 return true
             }
         }
+        return false
     }
-    totalFood() {
-        let totalFoodNumber = 0;
+    totalbrains() {
+        let totalbrainsNumber = 0;
         for(let i = 0; this.passengers.length > i; i++){
 
-            totalFoodNumber += this.passengers[i].food;
+            totalbrainsNumber += this.passengers[i].brains;
         }
-        return totalFoodNumber;
+        return totalbrainsNumber;
     }
 }
 
@@ -64,4 +63,4 @@ juan.eat()         // Juan eats – as Juan does. 🤣
 juan.eat()         // Juan has run out of food!
 console.log(juan)
 console.log(`Wagon Should Quarantine?: ${ wagon.shouldQuarantine() } – EXPECTED: true. Juan has run out of food and become unhealthy!`)
-console.log(`Wagon's Total Food?: ${ wagon.totalFood() } – EXPECTED: 3.`)
+console.log(`Wagon's Total Food?: ${ wagon.totalbrains() } – EXPECTED: 3.`)
